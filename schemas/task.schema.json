@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["id", "version", "visibility", "contamination_status", "leaderboard_eligible", "target", "software", "objective", "human_policy", "judge"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
+    "version": {"type": "string"},
+    "visibility": {"enum": ["public", "hidden"]},
+    "contamination_status": {"enum": ["none", "suspected", "public-reference"]},
+    "leaderboard_eligible": {"type": "boolean"},
+    "target": {"type": "object", "required": ["device", "codename", "soc"]},
+    "software": {"type": "object", "required": ["os", "android", "kernel"]},
+    "objective": {"type": "object", "required": ["summary"]},
+    "human_policy": {"type": "object", "required": ["technical_hints"], "properties": {"technical_hints": {"const": "forbidden"}}},
+    "limits": {"type": "object", "properties": {"max_turns": {"type": "integer", "minimum": 1}, "tool_timeout_seconds": {"type": "number", "exclusiveMinimum": 0}}},
+    "tools": {"type": "object", "properties": {"allowed": {"type": "array", "items": {"enum": ["shell", "adb", "adb_shell", "adb_logcat", "device_reboot", "wait_for_device", "wait_for_boot"]}}}},
+    "judge": {"type": "object", "required": ["criteria"], "properties": {"criteria": {"type": "string"}}}
+  },
+  "additionalProperties": false
+}

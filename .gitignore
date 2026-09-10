@@ -1,0 +1,26 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# BlobHell runtime artifacts
+runs/
+build/
+dist/
+
+# Local configuration / secrets
+.env
+.env.*
+!.env.example
+
+# Never commit locally supplied proprietary material
+blobs/
+proprietary/
+firmware/
+device-artifacts/
+local-artifacts/
+
+# Android build outputs
+out/

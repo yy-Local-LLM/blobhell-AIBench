@@ -1,0 +1,26 @@
+id: giza-vdec-reference
+version: "0.1"
+visibility: public
+contamination_status: public-reference
+leaderboard_eligible: false
+target:
+  device: Amazon Fire HD 8
+  generation: 6
+  codename: giza
+  soc: MediaTek MT8163
+software:
+  os: LineageOS 17.1
+  android: "10"
+  kernel: "3.18"
+objective:
+  summary: Restore reliable hardware-accelerated H.264 playback.
+human_policy:
+  technical_hints: forbidden
+limits:
+  max_turns: 100
+  tool_timeout_seconds: 300
+tools:
+  allowed: [shell, adb, adb_shell, adb_logcat, device_reboot, wait_for_device, wait_for_boot]
+judge:
+  criteria: judge/criteria.yaml
+

@@ -1,0 +1,22 @@
+{
+  "benchmark": "BlobHell-AIBench",
+  "harness_version": "0.1.0",
+  "task": "giza-vdec-reference",
+  "task_version": "0.1",
+  "run_id": "example-public-reference",
+  "model": "deterministic-script",
+  "agent_adapter": "scripted",
+  "result": "FAIL",
+  "leaderboard_eligible": false,
+  "contamination_status": "public-reference",
+  "human_technical_hints": 0,
+  "wall_time_seconds": 0.01,
+  "agent_turns": 1,
+  "tool_calls": 0,
+  "builds": 0,
+  "reboots": 0,
+  "failed_experiments": 0,
+  "checkpoints": {"BOOT_OK": "FAIL"},
+  "judge": {"version": "0.1", "result": "FAIL", "checks": []}
+}
+

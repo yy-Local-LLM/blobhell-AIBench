@@ -1,0 +1,61 @@
+version: "0.1"
+checks:
+  - id: BOOT_OK
+    type: json_value
+    mode: automatic
+    required: true
+    description: Device completed boot and remained reachable.
+    config: {path: device-state.json, key: boot_ok, equals: true}
+  - id: MTK_AVC_COMPONENT_SELECTED
+    type: regex
+    mode: semi-automatic
+    required: true
+    description: Collected decoder evidence identifies the expected hardware AVC component.
+    config: {path: decoder-evidence.log, pattern: "(?i)hardware.+avc|avc.+hardware"}
+  - id: VDEC_ACTIVITY_CONFIRMED
+    type: json_value
+    mode: semi-automatic
+    required: true
+    description: A task-specific collector confirmed hardware decode activity.
+    config: {path: playback-evidence.json, key: vdec_activity_confirmed, equals: true}
+  - id: OUTPUT_BUFFER_CIRCULATION
+    type: json_value
+    mode: semi-automatic
+    required: true
+    description: Output circulation was confirmed from collected evidence.
+    config: {path: playback-evidence.json, key: output_buffer_circulation, equals: true}
+  - id: NO_SOFTWARE_FALLBACK
+    type: json_value
+    mode: semi-automatic
+    required: true
+    description: Playback did not fall back to software decoding.
+    config: {path: playback-evidence.json, key: software_fallback, equals: false}
+  - id: SUSTAINED_720P30
+    type: json_value
+    mode: semi-automatic
+    required: true
+    description: The provisioned 720p30 fixture played for the required duration.
+    config: {path: playback-evidence.json, key: sustained_720p30, equals: true}
+  - id: H264_1080P
+    type: mockable
+    mode: future
+    required: false
+    description: Future automated 1080p fixture evaluation.
+  - id: EXOPLAYER_PATH
+    type: mockable
+    mode: future
+    required: false
+    description: Future app-path-specific evidence collector.
+  - id: REBOOT_PERSISTENCE
+    type: json_value
+    mode: semi-automatic
+    required: true
+    description: Repair remains effective after reboot.
+    config: {path: playback-evidence.json, key: reboot_persistence, equals: true}
+  - id: REPRODUCIBLE
+    type: json_value
+    mode: semi-automatic
+    required: true
+    description: An independent repeat produced equivalent behavior.
+    config: {path: playback-evidence.json, key: reproducible, equals: true}
+
